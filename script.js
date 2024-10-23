@@ -1,3 +1,184 @@
+const codeSnippets = {
+    sendMessage: {
+        javascript: `
+async function sendMessage() {
+    const botToken = $('#botToken').val();
+    const chatId = $('#chatId').val();
+    const message = $('#message').val();
+    
+    const data = {
+        chat_id: chatId,
+        text: message
+    };
+
+    $.ajax({
+        url: \`https://api.telegram.org/bot\${botToken}/sendMessage\`,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+            $('#apiResponseMessage').html('<div class="alert alert-success" role="alert">Message sent successfully!</div>');
+        },
+        error: function(err) {
+            $('#apiResponseMessage').html('<div class="alert alert-danger" role="alert">Error sending message</div>');
+            console.log(err);
+        }
+    });
+}
+        `,
+        python: `
+import requests
+
+def send_message(bot_token, chat_id, message):
+    data = {
+        'chat_id': chat_id,
+        'text': message
+    }
+    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+    response = requests.post(url, json=data)
+    return response.json()
+
+bot_token = 'YOUR_BOT_TOKEN'
+chat_id = 'YOUR_CHAT_ID'
+message = 'YOUR_MESSAGE'
+
+send_message(bot_token, chat_id, message)
+        `,
+        ruby: `
+require 'net/http'
+require 'json'
+
+def send_message(bot_token, chat_id, message)
+    uri = URI("https://api.telegram.org/bot#{bot_token}/sendMessage")
+    data = {
+        chat_id: chat_id,
+        text: message
+    }
+    response = Net::HTTP.post(uri, data.to_json, "Content-Type" => "application/json")
+    JSON.parse(response.body)
+end
+
+bot_token = 'YOUR_BOT_TOKEN'
+chat_id = 'YOUR_CHAT_ID'
+message = 'YOUR_MESSAGE'
+
+send_message(bot_token, chat_id, message)
+        `,
+        nodejs: `
+const axios = require('axios');
+
+async function sendMessage(botToken, chatId, message) {
+    const data = {
+        chat_id: chatId,
+        text: message
+    };
+    const url = \`https://api.telegram.org/bot\${botToken}/sendMessage\`;
+    const response = await axios.post(url, data);
+    return response.data;
+}
+
+const botToken = 'YOUR_BOT_TOKEN';
+const chatId = 'YOUR_CHAT_ID';
+const message = 'YOUR_MESSAGE';
+
+sendMessage(botToken, chatId, message).then(console.log).catch(console.error);
+        `
+    },
+    sendPhoto: {
+        javascript: `
+async function sendPhoto() {
+    const botToken = $('#botToken').val();
+    const chatId = $('#chatId').val();
+    const photoUrl = $('#fileUrl').val();
+    const caption = $('#caption').val();
+    
+    const data = {
+        chat_id: chatId,
+        photo: photoUrl,
+        caption: caption
+    };
+
+    $.ajax({
+        url: \`https://api.telegram.org/bot\${botToken}/sendPhoto\`,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+            $('#apiResponseMessage').html('<div class="alert alert-success" role="alert">Photo sent successfully!</div>');
+        },
+        error: function(err) {
+            $('#apiResponseMessage').html('<div class="alert alert-danger" role="alert">Error sending photo</div>');
+            console.log(err);
+        }
+    });
+}
+        `,
+        python: `
+import requests
+
+def send_photo(bot_token, chat_id, photo_url, caption):
+    data = {
+        'chat_id': chat_id,
+        'photo': photo_url,
+        'caption': caption
+    }
+    url = f'https://api.telegram.org/bot{bot_token}/sendPhoto'
+    response = requests.post(url, json=data)
+    return response.json()
+
+bot_token = 'YOUR_BOT_TOKEN'
+chat_id = 'YOUR_CHAT_ID'
+photo_url = 'YOUR_PHOTO_URL'
+caption = 'YOUR_CAPTION'
+
+send_photo(bot_token, chat_id, photo_url, caption)
+        `,
+        ruby: `
+require 'net/http'
+require 'json'
+
+def send_photo(bot_token, chat_id, photo_url, caption)
+    uri = URI("https://api.telegram.org/bot#{bot_token}/sendPhoto")
+    data = {
+        chat_id: chat_id,
+        photo: photo_url,
+        caption: caption
+    }
+    response = Net::HTTP.post(uri, data.to_json, "Content-Type" => "application/json")
+    JSON.parse(response.body)
+end
+
+bot_token = 'YOUR_BOT_TOKEN'
+chat_id = 'YOUR_CHAT_ID'
+photo_url = 'YOUR_PHOTO_URL'
+caption = 'YOUR_CAPTION'
+
+send_photo(bot_token, chat_id, photo_url, caption)
+        `,
+        nodejs: `
+const axios = require('axios');
+
+async function sendPhoto(botToken, chatId, photoUrl, caption) {
+    const data = {
+        chat_id: chatId,
+        photo: photoUrl,
+        caption: caption
+    };
+    const url = \`https://api.telegram.org/bot\${botToken}/sendPhoto\`;
+    const response = await axios.post(url, data);
+    return response.data;
+}
+
+const botToken = 'YOUR_BOT_TOKEN';
+const chatId = 'YOUR_CHAT_ID';
+const photoUrl = 'YOUR_PHOTO_URL';
+const caption = 'YOUR_CAPTION';
+
+sendPhoto(botToken, chatId, photoUrl, caption).then(console.log).catch(console.error);
+        `
+    },
+};
+
 async function sendMessage() {
     const botToken = $('#botToken').val();
     const chatId = $('#chatId').val();
