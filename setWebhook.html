@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Webhook</title>
+    <meta name="description" content="Configure webhook settings for your Telegram Bot. Set your API and webhook URL with this interface.">
+    <meta name="keywords" content="Telegram Bot, Set Webhook, Configure Webhook, API, Webhook URL, JavaScript, Python, Ruby, Node.js">
+    <meta name="author" content="Your Name">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Telegram Bot</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="apiMethods.html">API Methods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setWebhook.html">Set Webhook</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>Set Webhook</h1>
+            </div>
+            <div class="card-body">
+                <form id="webhookForm">
+                    <div class="form-group">
+                        <label for="botToken">Bot Token</label>
+                        <input type="text" class="form-control" id="botToken" placeholder="Enter Bot Token">
+                    </div>
+                    <div class="form-group">
+                        <label for="webhookUrl">Webhook URL</label>
+                        <input type="text" class="form-control" id="webhookUrl" placeholder="Enter Webhook URL">
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" onclick="setWebhook()">Set Webhook</button>
+                </form>
+                <div id="webhookResponseMessage"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-primary text-white text-center py-3">
+        <p>© 2024 Telegram Bot Interface | <a href="https://t.me/YourBot" target="_blank" class="text-white">Join Telegram</a></p>
+    </footer>
+    <div class="floating-chat">
+        <a href="https://t.me/YourBot" target="_blank">Join our Telegram</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
